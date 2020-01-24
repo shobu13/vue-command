@@ -77,15 +77,21 @@ export default {
     uid: {
       type: Number,
       required: true
+    },
+    current: {
+      type: String,
+      require: true
     }
   },
 
-  data: () => ({
-    command: '',
-    // For virtual path simulation
-    localPrompt: '',
-    placeholder: ''
-  }),
+  data: function () {
+    return {
+      command: this.$props.current,
+      // For virtual path simulation
+      localPrompt: '',
+      placeholder: ''
+    }
+  },
 
   watch: {
     lastCommand () {

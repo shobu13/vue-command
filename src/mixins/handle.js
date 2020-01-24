@@ -24,19 +24,21 @@ export default {
         const builtIn = this.builtIn[program]
         const command = this.commands[program]
 
-        const builtInOrCommand = builtIn || command
+        const builtInOrCommand = builtIn || (command && command.command)
 
         let component
         // Check if command has been found
         if (typeof builtInOrCommand === 'function') {
+          this.setCurrent('')
           this.history.push({ component: undefined, prompt: this.$props.prompt })
           const history = this.history.length
 
           this.setIsInProgress(true)
 
           const parsed = yargsParser(stdin, this.yargsOptions)
+
           const stdout = await Promise.resolve(
-            builtInOrCommand(parsed, typeof builtin === 'function' ? this.$data : undefined)
+            builtInOrCommand(parsed, typeof builtIn === 'function' ? this.$data : undefined)
           )
 
           if (stdout === '') {
@@ -93,11 +95,8 @@ export default {
             }
           }
         })
-
         this.history.push({ stdout: component, prompt: this.$props.prompt })
       }
-
-      this.setCurrent('')
     }
   }
 }
