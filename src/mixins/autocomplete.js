@@ -17,9 +17,6 @@ export default {
             trContent.push(autocomplete.splice(0, 10))
           }
           trContent = trContent.map(tr => `<tr>${tr.map(td => `<td>${td}</td>`).join('')}</tr>`).join('')
-          /* let content = '<table>' +
-          '<tr><td>ldlsfldsfl</td><td>ldlsfldsfl</td><td>ldldsfl</td><td>sfldsfl</td><td>ldlfl</td></tr>' +
-          '<table/>' */
           let component = getComponent(`<table style="border-spacing: ${this.$props.autocompleteSpacing}">${trContent}</table>`)
           if (!hasOwnProperty.call(component, 'mixins')) {
             component.mixins = []
@@ -38,7 +35,7 @@ export default {
             }
           })
           this.history.push({ stdout: component, prompt: this.prompt })
-          this.setCurrent('')
+          this.setCurrent(this.current)
         } else {
           this.bus.$emit('autocomplete', { command: autocomplete, uid: this._uid })
         }

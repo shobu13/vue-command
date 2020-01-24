@@ -46,6 +46,7 @@
               :help-timeout="helpTimeout"
               :show-help="showHelp"
               :uid="_uid"
+              :current="current"
               @cursor="setCursor"
               @handle="handle"
               @typing="setCurrent" />
