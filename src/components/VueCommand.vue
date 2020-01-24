@@ -74,6 +74,9 @@ export default {
   mixins: [Autocomplete, Handle, History],
 
   props: {
+    autocompleteSpacing: {
+      type: String
+    },
     autocompletionResolver: {
       type: Function
     },
