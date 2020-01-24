@@ -4,8 +4,8 @@
     class="stdin-container">
     <span
       v-if="!hidePrompt"
-      class="term-ps">
-      {{ prompt }}
+      class="term-ps"
+      v-html="prompt">
     </span>
     <span class="term-stdin">
       <input
