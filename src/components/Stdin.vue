@@ -8,18 +8,19 @@
       v-html="prompt">
     </span>
     <span class="term-stdin">
-      <input
+      <textarea
         ref="input"
         v-model="command"
         :autofocus="isLast"
         :disabled="!isLast || isInProgress"
         :placeholder="placeholder"
-        type="text"
-        autocorrect="off"
         autocapitalize="none"
+        style="resize: none; word-break: break-all"
         @click="emitCursor"
         @keyup="emitCursor"
-        @keyup.enter="handle"/>
+        @keyup.enter="handle"
+        @keydown.enter.prevent
+        @input="onInput"/>
     </span>
   </div>
 </template>
@@ -152,7 +153,7 @@ export default {
 
   methods: {
     // Handle current command
-    handle () {
+    handle (event) {
       // Wait for other commands to finish
       if (this.isInProgress) {
         return
@@ -180,6 +181,12 @@ export default {
 
     setLocalPrompt (localPrompt) {
       this.localPrompt = localPrompt
+    },
+    onInput (event) {
+      let textarea = event.target
+
+      textarea.style.height = '' /* Reset the height */
+      textarea.style.height = textarea.scrollHeight + 'px'
     }
   }
 }

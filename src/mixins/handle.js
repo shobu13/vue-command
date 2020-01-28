@@ -6,7 +6,7 @@ export default {
     // Handles the command
     async handle (stdin) {
       // Remove leading and trailing whitespace
-      stdin = stdin.trim()
+      stdin = stdin === undefined ? '' : stdin.trim()
 
       this.$emit('execute', stdin)
 
