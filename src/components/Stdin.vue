@@ -206,8 +206,7 @@ export default {
   textarea {
     background: none;
     border: none;
-    font-family: "Inconsolata", monospace;
-    font-size: 1rem;
+    font-size: inherit;
     outline: none;
     flex: 1;
     width: 100%;
@@ -223,9 +222,6 @@ export default {
     margin: 0;
     margin-left: 0.5rem;
     border: 0;
-    color: inherit;
-    font-family: inherit;
-    font-size: 1rem;
   }
 }
 </style>

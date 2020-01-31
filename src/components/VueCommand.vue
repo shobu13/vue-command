@@ -46,7 +46,6 @@
               :help-timeout="helpTimeout"
               :show-help="showHelp"
               :uid="_uid"
-
               @cursor="setCursor"
               @handle="handle"
               @typing="setCurrent" />
@@ -269,8 +268,8 @@ export default {
   }
 
   .term-title {
-    font-family: "Montserrat", sans-serif;
-    font-size: 0.85rem;
+    font-family: inherit;
+    font-size: inherit;
     margin: auto 0;
   }
 
@@ -279,7 +278,7 @@ export default {
   }
 
   .term-cont {
-    font-family: "Inconsolata", monospace;
+    font-family: inherit;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     padding-bottom: 0.5rem;
